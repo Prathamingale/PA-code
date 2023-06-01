@@ -438,3 +438,155 @@ void LCD_write_string( char *str)
  i++;
  }
 }
+
+
+
+
+
+
+
+
+The LED Flash Program:
+#include<pic18f4550.h>
+void delay(int);
+sbit a=PB^2;
+sbit b=PB^3;
+sbit c=PB^4;
+sbit d=PB^5;
+void main()
+{
+TRISB=0x00;
+a=b=c=d=0x00;
+delay(10);
+a=b=c=d=0xFF;}
+
+
+void delay(int a )
+{
+unsigned char c;
+for(c=0;c<a;c++)
+for(c=0;c<250;c++);
+}
+
+
+
+
+
+
+
+/* Program for Addition of Array. */ 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <pic18f4550.h>
+
+
+void main(void) {
+
+    int i,sum,n;
+
+    int number[] = {1,2,3,4,5,6,7,8,9,10};     // array of 10 numbers
+
+    sum = 0;                                   // initialize sum as zero
+    
+    for(i=0; i<=9;i++){                        //indexing start from 0 to 9
+        sum = sum+number[i];
+    }
+
+    TRISB =0;                                  //initialize Port_B as output
+    PORTB = sum;                               // from sum to PORT_B
+
+   }
+
+
+
+
+
+
+/*  Memory Transfer */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <pic18f4550.h>
+/*
+ * 
+ */
+void main(void) {
+
+    int temp,i;
+    int source1[] = {0x21,0x22,0x23,0x24,0x25};   // source mem block
+    int dest[] = {0x00,0x00,0x00,0x00,0x00};      // destination mem block
+
+    for(i=0; i<=4;i++){                          // counter = 5
+      
+      dest[i] = source1[i];                      // source to destination
+      
+    }
+}
+
+
+
+
+
+
+
+
+
+
+3.b. Memory Exchange
+
+
+/*
+ * File:   mem_xchg.c
+ * Author: Abhilasha
+ 
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <pic18f4550.h>
+void main(void) {
+
+    int temp,i;
+    int source1[] = {0x21,0x22,0x23,0x24,0x25};
+    int dest[] = {0x91,0x92,0x93,0x94,0x95};
+
+    for(i=0; i<=4;i++)
+{
+      temp = source1[i];
+      source1[i] = dest[i];
+      dest[i] = temp;
+
+    }
+}
+
+
+
+
+
+
+
+/* Sorting the array */
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <pic18f4550.h>
+
+
+void main(void) {
+    int i,j,temp;
+    int num_asc[] = {10,2,5,1,6};
+
+    for(i=0; i<=4; i++){                  // point to LHS number
+        for(j=i+1;j<=4;j++)               // point to RHS number
+        if (num_asc[i] > num_asc[j]){     // if LHS > RHS , change the position
+            temp = num_asc[i];
+            num_asc[i] =num_asc[j];
+            num_asc[j]= temp;
+        }
+    }
+}
+
+
